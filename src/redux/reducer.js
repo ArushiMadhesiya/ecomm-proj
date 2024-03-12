@@ -17,8 +17,23 @@ const cartData=(initial_state=[],action)=>{
         //    const newState= initial_state.slice(0, -1);
         //     return newState;
         //initial_state.length=initial_state.length-1;
-            initial_state.pop();
-            return [...initial_state];
+        let f=0;
+        let newState=[];
+            for(const x of initial_state){
+                if(x.id!=action.data ){
+                    
+                    newState.push(x);
+                }
+                else if( f==0){
+                    f=1;
+                    
+                }
+                else newState.push(x);
+                
+            }
+           // initial_state.pop();
+           // return [...initial_state];
+           return newState;
         }
         case EMPTY_CART:{
             const newState=[];
